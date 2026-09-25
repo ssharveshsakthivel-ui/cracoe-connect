@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 
 export default function AdminPanelScreen() {
   const navigate = useNavigate();
-  const getCurrentUser = useDataStore((state) => state.getCurrentUser);
   const users = useDataStore((state) => state.users);
   const updateUserPermission = useDataStore((state) => state.updateUserPermission);
   const getUser = useDataStore((state) => state.getUser);
