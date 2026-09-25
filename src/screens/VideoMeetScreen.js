@@ -269,10 +269,8 @@ export default function VideoMeetScreen() {
     if (wsRef.current) return;
     const ws = new WebSocket(SIGNALING_URL);
     wsRef.current = ws;
-    setConnectionStatus('connecting');
 
     ws.onopen = () => {
-      setConnectionStatus('connected');
       sendSignal({
         type: 'join', roomId: roomSlug, peerId: peerIdRef.current,
         name: displayName || currentUser?.name || 'Guest',
@@ -304,7 +302,6 @@ export default function VideoMeetScreen() {
     };
 
     ws.onclose = () => {
-      setConnectionStatus('disconnected');
       wsRef.current = null;
     };
   };
