@@ -38,7 +38,7 @@ export default function CommandPalette() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [setIsOpen]);
 
   if (!isOpen) return null;
 

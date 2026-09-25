@@ -25,7 +25,6 @@ export default function AdminPanelScreen() {
   const [userError, setUserError] = useState('');
 
   const canViewAdmin = useDataStore((state) => state.canViewAdmin);
-  const currentUser = getCurrentUser();
 
   if (!canViewAdmin()) {
     return (

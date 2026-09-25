@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDataStore } from '../store/dataStore';
 import GlassCard from '../components/ui/GlassCard';
 import GradientText from '../components/ui/GradientText';
-import { AnimatePresence, motion } from 'framer-motion';
 import {
-  LogOut,
   Users,
   CheckCircle,
   Clock,
   AlertCircle,
   Calendar,
   Send,
-  Plus,
-  Search,
   Bell,
   BarChart2,
   MoreVertical,
@@ -22,18 +18,14 @@ import {
 
 export default function DashboardScreen() {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
   const [messageText, setMessageText] = useState('');
   
   const currentUserId = useDataStore((state) => state.currentUserId);
   const getCurrentUser = useDataStore((state) => state.getCurrentUser);
   const getUser = useDataStore((state) => state.getUser);
   const getTaskStatistics = useDataStore((state) => state.getTaskStatistics);
-  const searchAll = useDataStore((state) => state.searchAll);
-  const logout = useDataStore((state) => state.logout);
   const users = useDataStore((state) => state.users);
   const meetings = useDataStore((state) => state.meetings);
-  const tasks = useDataStore((state) => state.tasks);
   const messages = useDataStore((state) => state.messages);
   const sendMessage = useDataStore((state) => state.sendMessage);
   
@@ -47,12 +39,6 @@ export default function DashboardScreen() {
     'meeting_approved', 'meeting_denied', 'meeting_recording',
   ]);
   const visibleMessages = messages.filter((msg) => !systemMessageTypes.has(msg.type)).slice(-10);
-
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    searchAll(query);
-  };
 
   const handleSendMessage = () => {
     if (messageText.trim()) {

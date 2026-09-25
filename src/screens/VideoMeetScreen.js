@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
-  ArrowLeft,
   Link as LinkIcon,
   Mic,
   MicOff,
@@ -13,9 +12,6 @@ import {
   ShieldAlert,
   Radio,
   Users,
-  Sparkles,
-  MessageSquare,
-  Settings,
   MoreVertical,
   CheckCircle2,
   X
@@ -48,7 +44,6 @@ const SIGNALING_URL =
 const ICE_SERVERS = [{ urls: 'stun:stun.l.google.com:19302' }];
 
 export default function VideoMeetScreen() {
-  const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const roomFromUrl = params.get('room') || '';
@@ -58,7 +53,6 @@ export default function VideoMeetScreen() {
   const meetings = useDataStore((state) => state.meetings);
   const sendSharedMessage = useDataStore((state) => state.sendSharedMessage);
   const addMeeting = useDataStore((state) => state.addMeeting);
-  const getUser = useDataStore((state) => state.getUser);
   const addToast = useDataStore((state) => state.addToast);
 
   const [roomName, setRoomName] = useState(roomFromUrl);
@@ -71,7 +65,6 @@ export default function VideoMeetScreen() {
   const [lobbyEnabled, setLobbyEnabled] = useState(true);
   const [requestSent, setRequestSent] = useState(false);
   const [error, setError] = useState('');
-  const [connectionStatus, setConnectionStatus] = useState('idle');
   const [localStream, setLocalStream] = useState(null);
   const [peers, setPeers] = useState([]);
   

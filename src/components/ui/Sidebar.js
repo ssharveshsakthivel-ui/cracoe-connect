@@ -7,7 +7,6 @@ import {
   Video, 
   Shield, 
   Menu,
-  ChevronLeft,
   LogOut,
   Search,
   CheckSquare,
@@ -20,7 +19,6 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   const logout = useDataStore((state) => state.logout);
-  const currentUser = useDataStore((state) => state.getCurrentUser());
   const setCommandPaletteOpen = useDataStore((state) => state.setCommandPaletteOpen);
   const canViewAdmin = useDataStore((state) => state.canViewAdmin);
 
