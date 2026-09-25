@@ -39,8 +39,8 @@ const sortByTimestamp = (items) =>
   [...items].sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
 
 const isSupabaseConfigured = () => {
-  const url = process.env.REACT_APP_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.REACT_APP_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const url = process.env.REACT_APP_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ktuqyyjodabzcwyabbls.supabase.co';
+  const key = process.env.REACT_APP_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Uw0opZ9C6UoSwAF8HMI-wg_N5HYjUTi';
   return Boolean(url && key);
 };
 
